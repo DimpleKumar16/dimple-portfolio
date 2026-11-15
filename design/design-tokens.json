@@ -1,0 +1,3 @@
+{"color":{"dark":{"bg1":"#050d1f","bg2":"#08183a","bg3":"#0b2a55","text":"#e8f4ff","muted":"#8fb0d3","accent":"#22e3ff","accent2":"#4d7bff","border":"rgba(80,200,255,0.20)","card":"rgba(14,32,64,0.55)"},
+"light":{"bg1":"#eaf6ff","bg2":"#cfe9fb","bg3":"#a9d3f5","text":"#0b1b33","muted":"#46607f","accent":"#0a8fd6","accent2":"#2457ff","border":"rgba(20,90,160,0.18)","card":"rgba(255,255,255,0.62)"}},
+"font":{"display":"Sora","mono":"JetBrains Mono"},"radius":{"card":20,"button":14,"chip":99},"blur":{"glass":14}}

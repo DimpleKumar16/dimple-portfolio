@@ -1,0 +1,49 @@
+/* Design tokens. Mirrors design/design-tokens.json — keep the two in sync. */
+:root {
+  --bg-1: #eaf6ff;
+  --bg-2: #cfe9fb;
+  --bg-3: #a9d3f5;
+  --text: #0b1b33;
+  --muted: #46607f;
+  --card: rgba(255, 255, 255, .62);
+  --border: rgba(20, 90, 160, .18);
+  --accent: #0a8fd6;
+  --accent-2: #2457ff;
+  --glow: rgba(10, 143, 214, .35);
+  --particle-rgb: 10, 110, 190;
+  color-scheme: light;
+}
+
+/* Dark is the default when the OS asks for it and the user has not chosen light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-1: #050d1f;
+    --bg-2: #08183a;
+    --bg-3: #0b2a55;
+    --text: #e8f4ff;
+    --muted: #8fb0d3;
+    --card: rgba(14, 32, 64, .55);
+    --border: rgba(80, 200, 255, .2);
+    --accent: #22e3ff;
+    --accent-2: #4d7bff;
+    --glow: rgba(34, 227, 255, .4);
+    --particle-rgb: 80, 210, 255;
+    color-scheme: dark;
+  }
+}
+
+/* An explicit choice wins over the OS preference in both directions. */
+:root[data-theme="dark"] {
+  --bg-1: #050d1f;
+  --bg-2: #08183a;
+  --bg-3: #0b2a55;
+  --text: #e8f4ff;
+  --muted: #8fb0d3;
+  --card: rgba(14, 32, 64, .55);
+  --border: rgba(80, 200, 255, .2);
+  --accent: #22e3ff;
+  --accent-2: #4d7bff;
+  --glow: rgba(34, 227, 255, .4);
+  --particle-rgb: 80, 210, 255;
+  color-scheme: dark;
+}

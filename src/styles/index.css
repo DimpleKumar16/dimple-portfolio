@@ -1,0 +1,4 @@
+/* Global stylesheet entry. Imported first in main.tsx so that every
+   component stylesheet (colocated with its component) cascades after it. */
+@import './tokens.css';
+@import './base.css';

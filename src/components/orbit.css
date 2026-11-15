@@ -1,0 +1,130 @@
+.orbit {
+  position: relative;
+  width: min(440px, 86vw);
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.orbit-core {
+  position: absolute;
+  inset: 34%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 700 28px Sora, sans-serif;
+  color: #fff;
+  background: radial-gradient(circle at 30% 25%, var(--accent), var(--accent-2) 70%);
+  box-shadow: 0 0 60px var(--glow), inset 0 0 30px rgba(255, 255, 255, .25);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Two offset copies of the same expanding ripple. */
+.orbit-core:before,
+.orbit-core:after {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: .5;
+  animation: ripple 3.4s ease-out infinite;
+}
+
+.orbit-core:after {
+  animation-delay: 1.7s;
+}
+
+@keyframes ripple {
+  from {
+    transform: scale(.9);
+    opacity: .6;
+  }
+
+  to {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed var(--border);
+  animation: spin var(--duration) linear infinite;
+}
+
+.ring--inner {
+  inset: 14%;
+  --duration: 26s;
+}
+
+.ring--outer {
+  inset: 0;
+  --duration: 42s;
+  animation-direction: reverse;
+}
+
+.ring-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+
+.ring-node i {
+  position: absolute;
+  left: -36px;
+  top: -17px;
+  width: 72px;
+  text-align: center;
+  font: 500 11px 'JetBrains Mono', monospace;
+  font-style: normal;
+  padding: 6px 0;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 14px var(--glow);
+}
+
+/* Each label spins opposite its ring, at the same speed, so it stays upright. */
+.ring--inner .ring-node i {
+  animation: counter-spin 26s linear infinite;
+}
+
+/* TODO: outer labels do not stay upright. `counter-spin-reverse` already winds
+   the opposite way to `counter-spin` in order to cancel the outer ring's
+   reversed spin, so playing it in reverse as well doubles the rotation instead
+   of cancelling it. Dropping `animation-direction` below is the fix; kept here
+   so this restructure does not change what the page renders. */
+.ring--outer .ring-node i {
+  animation: counter-spin-reverse 42s linear infinite;
+  animation-direction: reverse;
+}
+
+@keyframes counter-spin {
+  from {
+    transform: rotate(calc(-1 * var(--angle)));
+  }
+
+  to {
+    transform: rotate(calc(-1 * var(--angle) - 360deg));
+  }
+}
+
+@keyframes counter-spin-reverse {
+  from {
+    transform: rotate(calc(-1 * var(--angle)));
+  }
+
+  to {
+    transform: rotate(calc(-1 * var(--angle) + 360deg));
+  }
+}
